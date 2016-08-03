@@ -7,8 +7,8 @@ import java.net.HttpURLConnection
 import java.net.URL
 
 /**
- * Created by Gregrog on 2016-08-03.
- */
+* Created by Gregrog on 2016-08-03.
+*/
 class KrakowMPKConnector {
 
     fun updateSchedule() {
