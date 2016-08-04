@@ -20,9 +20,10 @@ class KrakowMPKConnector {
     fun updateSchedule() {
 
         val databaseURL = getDatabaseURL()
+        val fileName = getFileName(databaseURL)
 
-        if (!File(getFileName(databaseURL)).exists()) {
-            downloadDatabase(databaseURL)
+        if (!File(fileName).exists()) {
+            downloadDatabase(databaseURL,databaseURL)
             log.info(File(".").canonicalFile)
         } else {
             log.info("File already downloaded.")
@@ -52,10 +53,10 @@ class KrakowMPKConnector {
         return jsonObject.getString("d")
     }
 
-    private fun downloadDatabase(databaseURL: String) {
+    private fun downloadDatabase(databaseURL: String, fileName: String) {
         val url = URL(databaseURL)
         val channel = Channels.newChannel(url.openStream())
-        val fileOutputStream = FileOutputStream(getFileName(databaseURL))
+        val fileOutputStream = FileOutputStream(fileName)
         fileOutputStream.channel.transferFrom(channel, 0, Long.MAX_VALUE)
         fileOutputStream.close()
     }
