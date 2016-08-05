@@ -12,8 +12,8 @@ import java.nio.channels.Channels
 import java.nio.channels.ReadableByteChannel
 
 /**
-* Created by Gregrog on 2016-08-03.
-*/
+ * Created by Gregrog on 2016-08-03.
+ */
 class KrakowMPKConnector {
     val log = Logger.getLogger(this.javaClass.name)
 
@@ -23,7 +23,7 @@ class KrakowMPKConnector {
         val fileName = getFileName(databaseURL)
 
         if (!File(fileName).exists()) {
-            downloadDatabase(databaseURL,databaseURL)
+            downloadDatabase(databaseURL, fileName)
             log.info(File(".").canonicalFile)
         } else {
             log.info("File already downloaded.")
