@@ -21,7 +21,7 @@ class KrakowMPKConnector {
 
         val databaseURL = getDatabaseURL()
         val fileName = getFileName(databaseURL)
-
+        log.info(databaseURL)
         if (!File(fileName).exists()) {
             downloadDatabase(databaseURL, fileName)
             log.info(File(".").canonicalFile)
@@ -61,5 +61,5 @@ class KrakowMPKConnector {
         fileOutputStream.close()
     }
 
-    private fun getFileName(databaseURL: String) = "MPKDatabase." + databaseURL.substring(databaseURL.lastIndexOf(".") + 1)
+    private fun getFileName(databaseURL: String) = databaseURL.substring(databaseURL.lastIndexOf("/") + 1)
 }
