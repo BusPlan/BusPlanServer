@@ -1,4 +1,4 @@
-package com.plan.bus.server.com.plan.bus.server.infoaggregator.RESTConnectors.Krakow
+package com.plan.bus.server.com.infoaggregator.RESTConnectors.Krakow
 
 import org.apache.log4j.Logger
 import org.json.JSONObject

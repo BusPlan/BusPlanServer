@@ -1,6 +1,6 @@
-package com.plan.bus.server.com.plan.bus.server.infoaggregator
+package com.plan.bus.server.com.infoaggregator
 
-import com.plan.bus.server.com.plan.bus.server.infoaggregator.RESTConnectors.Krakow.KrakowMPKConnector
+import com.plan.bus.server.com.infoaggregator.RESTConnectors.Krakow.KrakowMPKConnector
 import org.springframework.boot.context.event.ApplicationReadyEvent
 import org.springframework.context.ApplicationListener
 import org.springframework.stereotype.Component
