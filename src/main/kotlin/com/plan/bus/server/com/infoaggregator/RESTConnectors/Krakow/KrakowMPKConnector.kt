@@ -2,6 +2,7 @@ package com.plan.bus.server.com.infoaggregator.RESTConnectors.Krakow
 
 import org.apache.log4j.Logger
 import org.json.JSONObject
+import org.springframework.util.StringUtils
 import java.io.BufferedReader
 import java.io.File
 import java.io.FileOutputStream
@@ -10,6 +11,8 @@ import java.net.HttpURLConnection
 import java.net.URL
 import java.nio.channels.Channels
 import java.nio.channels.ReadableByteChannel
+import java.sql.DriverManager
+import java.util.*
 
 /**
  * Created by Gregrog on 2016-08-03.
@@ -24,10 +27,24 @@ class KrakowMPKConnector {
         log.info(databaseURL)
         if (!File(fileName).exists()) {
             downloadDatabase(databaseURL, fileName)
+
             log.info(File(".").canonicalFile)
         } else {
             log.info("File already downloaded.")
         }
+        Class.forName("org.sqlite.JDBC")
+        val sJdbc = "jdbc:sqlite"
+        val sDbUrl = sJdbc + ":" + fileName
+        val connection = DriverManager.getConnection(sDbUrl)
+        var preparedStatement = connection.createStatement()
+        val resultSet = preparedStatement.executeQuery("SELECT Id, Name, Symbol, FirstLetter FROM Stops")
+        while (resultSet.next())
+            log.info(StringJoiner(" ", "", "")
+                    .add(resultSet.getString("Id"))
+                    .add(resultSet.getString("Name"))
+                    .add(resultSet.getString("Symbol"))
+                    .add(resultSet.getString("FirstLetter")).toString())
+
     }
 
 
