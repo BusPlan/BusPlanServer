@@ -47,19 +47,13 @@ class KrakowMPKConnector {
         val sJdbc = "jdbc:sqlite"
         val sDbUrl = sJdbc + ":" + fileName
         val connection = DriverManager.getConnection(sDbUrl)
-        var preparedStatement = connection.createStatement()
+        val preparedStatement = connection.createStatement()
         val resultSet = preparedStatement.executeQuery("SELECT Id, Name, Symbol, FirstLetter FROM Stops")
 
         val h2Connection = h2Config.dataSource.connection
         val h2Statement = h2Connection.prepareStatement("INSERT INTO STOPS (Id,Name,Symbol,FirstLetter) VALUES ($1,$2,$3,$4)")
 
         while (resultSet.next()) {
-            var values = StringJoiner(",", "", "")
-                    .add(resultSet.getString("Id"))
-                    .add(resultSet.getString("Name"))
-                    .add("\"" + resultSet.getString("Symbol") + "\"")
-                    .add("\"" + resultSet.getString("FirstLetter") +"\"").toString()
-            log.info(values)
 
             h2Statement.setInt(1,resultSet.getInt("Id"))
             h2Statement.setString(2,resultSet.getString("Name"))
