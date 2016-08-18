@@ -1,5 +1,6 @@
 package com.plan.bus.server.com.infoaggregator.RESTConnectors.Krakow
 
+import com.plan.bus.server.com.infoaggregator.h2.H2Config
 import org.apache.log4j.Logger
 import org.json.JSONObject
 import org.springframework.beans.factory.annotation.Autowired

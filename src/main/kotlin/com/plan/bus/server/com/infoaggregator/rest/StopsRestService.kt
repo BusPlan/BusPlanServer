@@ -1,6 +1,6 @@
 package com.plan.bus.server.com.infoaggregator.rest
 
-import com.plan.bus.server.com.infoaggregator.RESTConnectors.Krakow.H2Config
+import com.plan.bus.server.com.infoaggregator.h2.H2Config
 import com.plan.bus.server.com.infoaggregator.rest.dto.StopDTO
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.RequestMapping
