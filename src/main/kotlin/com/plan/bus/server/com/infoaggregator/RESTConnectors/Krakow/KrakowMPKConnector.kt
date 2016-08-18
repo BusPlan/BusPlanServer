@@ -30,6 +30,8 @@ class KrakowMPKConnector {
 
     @Autowired
     private lateinit var h2Config: H2Config
+    @Autowired
+    private lateinit var krakowMPKUrls : KrakowMPKUrls
 
 
     fun updateSchedule() {
@@ -68,7 +70,7 @@ class KrakowMPKConnector {
 
 
     fun getDatabaseURL(): String {
-        val url = URL("http://m.rozklady.mpk.krakow.pl/Services/data.asmx/GetDatabase")
+        val url = URL(krakowMPKUrls.databaseURL)
         val content = "{}"
         val connection = url.openConnection() as HttpURLConnection
         connection.requestMethod = "POST"

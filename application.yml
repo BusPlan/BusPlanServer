@@ -1,0 +1,2 @@
+KrakowMPKUrls:
+  databaseURL: "http://m.rozklady.mpk.krakow.pl/Services/data.asmx/GetDatabase"
