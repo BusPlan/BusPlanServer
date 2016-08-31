@@ -1,2 +1,23 @@
+spring:
+  profiles:
+    active: local
+  application:
+    name: BusPlanServer
+
 KrakowMPKUrls:
   databaseURL: "http://m.rozklady.mpk.krakow.pl/Services/data.asmx/GetDatabase"
+
+---
+
+spring:
+  profiles: local
+
+  datasource:
+    url: jdbc:h2:mem:BPS;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
+      path: /db
